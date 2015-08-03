@@ -12,7 +12,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12 text-center voffset4">
+		<div class="col-sm-12 text-center voffset4 video-container">
 			<iframe width="840" height="500" src="<%= @video.embed_url %>" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
@@ -42,8 +42,8 @@
 
 <script async src="https://www.redditstatic.com/comment-embed.js"></script>
 
-<style type="text/css">
-	.header_wrap {
-		background: url(<%= image_path 'header_art.jpg' %>) no-repeat center center;
-	}	
-</style>
+<script type="text/javascript">
+	$(function() {
+		$('.video-container').fitVids();
+	})
+</script>
