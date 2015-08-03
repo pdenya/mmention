@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 text-center voffset2">
+			<iframe width="840" height="500" src="<%= @video.embed_url %>" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
+	<div class="row"></div>
+		<div class="col-sm-12">
+			<% users = [] %>
+			<% @video.comments.order('score DESC').each do |comment| %>
+				<%# Only show highest voted comment for each user %>
+				<% next if users.include?(comment.user) %>
+				<% users << comment.user %>
+
+				<div class="voffset4 comments">
+					<div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="true" data-embed-live="true" data-embed-created="2015-08-02T20:55:04.666Z">
+						<a href="<%= comment.url %>">Comment</a>
+
+						<p><b>[<%= comment.score %>] <%= comment.user %> in /r/<%= comment.subreddit %></b></p>
+						<p><a href="<%= comment.thread_url %>">reddit thread</a> | <a href="<%= comment.url %>">reddit comment</a></p>
+
+						<%= BlueCloth.new(comment.text).to_html.html_safe  %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<script async src="https://www.redditstatic.com/comment-embed.js"></script>
+<style type="text/css">
+	.comments iframe {
+		max-width: 1200px !important;
+	}
+</style>

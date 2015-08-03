@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+ .vnooffset, .voffset0 { margin-top: 0px; }
+ .voffset  { margin-top: 2px; }
+ .voffset1 { margin-top: 5px; }
+ .voffset2 { margin-top: 10px; }
+ .voffset3 { margin-top: 15px; }
+ .voffset4 { margin-top: 30px; }
+ .voffset5 { margin-top: 40px; }
+ .voffset6 { margin-top: 60px; }
+ .voffset7 { margin-top: 80px; }
+ .voffset8 { margin-top: 100px; }
+ .voffset9 { margin-top: 150px; }
+ .vboffset0 { margin-bottom: 0px; }
+ .vboffset1 { margin-bottom: 5px; }
+ .vboffset2 { margin-bottom: 10px; }
+ .vboffset3 { margin-bottom: 15px; }
+ .vroffset1,.roffset1 { margin-right: 5px; }
+ .vroffset2,.roffset2 { margin-right: 10px; }
+ .roffset3 { margin-right: 15px; }
+ .roffset4 { margin-right: 30px; }
+ .loffset { margin-left: 2px; }
+ .loffset1 { margin-left: 5px; }
+ .loffset2 { margin-left: 10px; }
+ .loffset3 { margin-left: 15px; }
+ .loffset4 { margin-left: 30px; }
+
+ .text-sm {
+ 	font-size: .85em;
+ }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802000748) do
+ActiveRecord::Schema.define(version: 20150802195304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,12 @@ ActiveRecord::Schema.define(version: 20150802000748) do
     t.string   "user"
     t.datetime "posted_at"
     t.string   "subreddit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "thread_title"
+    t.string   "url"
+    t.string   "remote_id"
+    t.integer  "score"
   end
 
   create_table "references", force: :cascade do |t|
