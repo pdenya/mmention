@@ -1,25 +1,38 @@
+
+	<div class="header_wrap">
+		<a href="/">
+		<h1 class="text-center">Highly Recommended League of Legends videos</h1>
+		</a>
+	</div>
+
+
+<ol class="breadcrumb vboffset0 text-center">
+	<li class="active">The most referenced videos from the r/leagueoflegends and r/summonerschool subreddits.</li>
+</ol>
+
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12 text-center voffset2">
+		<div class="col-sm-12 text-center voffset4">
 			<iframe width="840" height="500" src="<%= @video.embed_url %>" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
 	<div class="row"></div>
 		<div class="col-sm-12">
 			<% users = [] %>
-			<% @video.comments.order('score DESC').each do |comment| %>
+			<% @video.comments.where('score > 0').order('score DESC').limit(20).each do |comment| %>
 				<%# Only show highest voted comment for each user %>
 				<% next if users.include?(comment.user) %>
 				<% users << comment.user %>
 
 				<div class="voffset4 comments">
 					<div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="true" data-embed-live="true" data-embed-created="2015-08-02T20:55:04.666Z">
-						<a href="<%= comment.url %>">Comment</a>
+						<a href="<%= comment.url %>" style="visibility: hidden;">Comment</a>
+						<div class="well no-border">
+							<p><b>[<%= comment.score %>] <%= comment.user %> in /r/<%= comment.subreddit %></b></p>
+							<p><a href="<%= comment.thread_url %>">reddit thread</a> | <a href="<%= comment.url %>">reddit comment</a></p>
 
-						<p><b>[<%= comment.score %>] <%= comment.user %> in /r/<%= comment.subreddit %></b></p>
-						<p><a href="<%= comment.thread_url %>">reddit thread</a> | <a href="<%= comment.url %>">reddit comment</a></p>
-
-						<%= BlueCloth.new(comment.text).to_html.html_safe  %>
+							<%= BlueCloth.new(comment.text).to_html.html_safe  %>
+						</div>
 					</div>
 				</div>
 			<% end %>
@@ -28,8 +41,9 @@
 </div>
 
 <script async src="https://www.redditstatic.com/comment-embed.js"></script>
+
 <style type="text/css">
-	.comments iframe {
-		max-width: 1200px !important;
-	}
+	.header_wrap {
+		background: url(<%= image_path 'header_art.jpg' %>) no-repeat center center;
+	}	
 </style>

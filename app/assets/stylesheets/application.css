@@ -42,3 +42,53 @@
  .text-sm {
  	font-size: .85em;
  }
+
+ .header_wrap {
+ 	color: #FFF;
+ 	padding: 40px;
+ 	text-align: center;
+ }
+
+ .header_wrap a {
+	color: #FFF;
+	text-decoration: none;
+ }
+
+ .header_wrap a:hover {
+	color: #AAF5A8;
+ }
+
+ h1 {
+ 	background-color: #222;
+ 	background-color: rgba(0,0,0,.7);
+ 	display: inline-block;
+ 	padding: 20px;
+ 	border-radius: 2px;
+ }
+
+ body {
+ 	background: #111;
+ }
+
+ a {
+
+ 	color: #1095C7;
+ }
+
+ span.label a {
+ 	color: #FFF;
+
+ }
+
+ .text-white {
+ 	color: #FFF;
+ }
+
+ ol.breadcrumb {
+ 	border-radius: 0px;
+ 	background-color: #191824;
+ }
+
+ .comments iframe {
+ 	max-width: 1200px !important;
+ }

@@ -1,45 +1,58 @@
 <div class="header_wrap">
-	<h1 class="text-center">Recommended League of Legends videos</h1>	
+	<h1 class="text-center">Highly Recommended League of Legends videos</h1>	
 </div>
+<ol class="breadcrumb vboffset0 text-center">
+	<li class="active">The most referenced videos from the r/leagueoflegends and r/summonerschool subreddits.</li>
+</ol>
 <div class="container">
-	<div class="row">
+	<div class="row voffset3">
 		<% @references.each do |ref| %>
 			<div class="col-sm-6 voffset2">
 				<div class="well no-border text-center">
 					<iframe width="420" height="315" src="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen></iframe>
-					<p class="text-left voffset2">
-						<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
-						<br><br>
-						<% @vid_by_sub[ref.video.id].each do |subreddit| %>
-							<span class="label label-primary"><%= subreddit %></span>
-						<% end %>
-					</p>
+					<div class="row text-left voffset2">
+						<div class="col-sm-5">
+							<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
+						</div>
+						<div class="col-sm-7">
+							<% @vid_by_sub[ref.video.id].each do |subreddit| %>
+								<span class="label label-info"><a href="/?subreddit=<%= subreddit %>">r/<%= subreddit %></a></span>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
 		<% end %>
+	</div>
+	<div class="row vboffset2">
+		<div class="col-sm-4">
+			<a href="/?page=<%= @page - 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-lg btn-warning" <%= 'disabled="disabled"' if @page < 2 %>>&laquo; Prev</a>
+		</div>
+		<div class="col-sm-4">
+			<h4 class="text-center text-white">
+				Page <%= @page %>
+			</h4>
+		</div>
+		<div class="col-sm-4">
+			<a href="/?page=<%= @page + 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-lg btn-warning">Next &raquo;</a>
+		</div>
 	</div>
 </div>
 <style type="text/css">
 	.header_wrap {
 		background: url(<%= image_path 'header_art.jpg' %>) no-repeat center center;
-		color: #FFF;
-		padding: 40px;
-		text-align: center;
-	}
-
-	h1 {
-		background-color: #222;
-		background-color: rgba(0,0,0,.7);
-		display: inline-block;
-		padding: 20px;
-	}
-
-	body {
-		background: #111;
-	}
-
-	a {
-		text-decoration: underline;
-		color: #1095C7;
-	}
+	}	
 </style>
+
+<% if !Rails.env.production? %>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-65878379-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+<% end %>
