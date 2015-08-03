@@ -1,5 +1,7 @@
+<div class="header_wrap">
+	<h1 class="text-center">Recommended League of Legends videos</h1>	
+</div>
 <div class="container">
-	<h1>Recommended League of Legends videos</h1>
 	<div class="row">
 		<% @references.each do |ref| %>
 			<div class="col-sm-6">
@@ -10,3 +12,22 @@
 		<% end %>
 	</div>
 </div>
+<style type="text/css">
+	.header_wrap {
+		background: url(<%= image_path 'header_art' %>) no-repeat center center;
+		color: #FFF;
+		padding: 40px;
+		text-align: center;
+	}
+
+	h1 {
+		background-color: #222;
+		background-color: rgba(0,0,0,.7);
+		display: inline-block;
+		padding: 20px;
+	}
+
+	body {
+		background: #111;
+	}
+</style>
