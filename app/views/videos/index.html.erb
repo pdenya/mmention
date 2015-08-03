@@ -4,17 +4,24 @@
 <div class="container">
 	<div class="row">
 		<% @references.each do |ref| %>
-			<div class="col-sm-6">
-				<iframe width="420" height="315" src="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen></iframe>
-				<p><%= link_to "#{ref.count} mentions", show_video_path(ref.video.id)  %></p>
-				<p><a href="<%= ref.video.url %>" target="_blank"><%= ref.video.url %></a></p>
+			<div class="col-sm-6 voffset2">
+				<div class="well no-border text-center">
+					<iframe width="420" height="315" src="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen></iframe>
+					<p class="text-left voffset2">
+						<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
+						<br><br>
+						<% @vid_by_sub[ref.video.id].each do |subreddit| %>
+							<span class="label label-primary"><%= subreddit %></span>
+						<% end %>
+					</p>
+				</div>
 			</div>
 		<% end %>
 	</div>
 </div>
 <style type="text/css">
 	.header_wrap {
-		background: url(<%= image_path 'header_art' %>) no-repeat center center;
+		background: url(<%= image_path 'header_art.jpg' %>) no-repeat center center;
 		color: #FFF;
 		padding: 40px;
 		text-align: center;
@@ -29,5 +36,10 @@
 
 	body {
 		background: #111;
+	}
+
+	a {
+		text-decoration: underline;
+		color: #1095C7;
 	}
 </style>
