@@ -1,8 +1,8 @@
 <div class="header_wrap">
-	<h1 class="text-center">Highly Recommended League of Legends videos</h1>	
+	<h1 class="text-center voffset0 bg-primary"><span>m</span>mention</h1>	
 </div>
 <ol class="breadcrumb vboffset0 text-center">
-	<li class="active">The most referenced videos from the r/leagueoflegends and r/summonerschool subreddits.</li>
+	<li class="active">The most referenced videos from the r/leagueoflegends &amp; r/summonerschool subreddits.</li>
 </ol>
 <div class="container">
 	<div class="row voffset3">
@@ -24,12 +24,12 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="row vboffset2">
+	<div class="row vboffset2 voffset6">
 		<div class="col-sm-4">
 			<a href="/?page=<%= @page - 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-lg btn-warning" <%= 'disabled="disabled"' if @page < 2 %>>&laquo; Prev</a>
 		</div>
 		<div class="col-sm-4">
-			<h4 class="text-center text-white">
+			<h4 class="text-center">
 				Page <%= @page %>
 			</h4>
 		</div>
