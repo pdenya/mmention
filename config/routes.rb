@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'videos#index'
   get 'v/:video_id' => 'videos#show', :as => :show_video
+  get 'r/:subreddit/:page' => 'videos#index'
+  get 'r/:subreddit' => 'videos#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
