@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root 'videos#index'
   get 'v/:video_id' => 'videos#show', :as => :show_video
+  get 'games/:game' => 'videos#game', :as => :show_game
   get 'r/:subreddit/:page' => 'videos#index'
   get 'r/:subreddit' => 'videos#index'
 

@@ -15,7 +15,7 @@
 							<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
 						</div>
 						<div class="col-sm-7 text-right">
-							<% @vid_by_sub[ref.video.id].each do |subreddit| %>
+							<% @subs_mentioning_video[ref.video.id].each do |subreddit| %>
 								<span class="label label-info"><a href="/?subreddit=<%= subreddit %>">r/<%= subreddit %></a></span>
 							<% end %>
 						</div>
