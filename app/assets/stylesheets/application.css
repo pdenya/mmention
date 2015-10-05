@@ -72,10 +72,6 @@ h1.text-center.bg-primary {
 	color: #AAF5A8;
  }
 
-.fluid-width-video-wrapper iframe .html5-video-player { 
-	background-color: #07b5ec !important;
-}
-
  h1 {
  	background-color: #222;
  	background-color: rgba(0,0,0,.7);
@@ -128,4 +124,7 @@ span.label {
 
  .comments iframe {
  	max-width: 1200px !important;
+ 	box-shadow: none !important;
  }
+
+.reddit-embed-footer { display: none !important; }
