@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'games/:game' => 'videos#game', :as => :show_game
   get 'r/:subreddit/:page' => 'videos#index'
   get 'r/:subreddit' => 'videos#index'
-  get '/about' => 'about'
+  
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
