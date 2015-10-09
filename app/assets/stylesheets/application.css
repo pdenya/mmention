@@ -81,8 +81,13 @@ h1.text-center.bg-primary {
  }
 
  body {
- 	background: #fff;
+ 	background: #000;
  }
+
+.container {
+	background-color: #2F2F2F;
+}
+
 
 .breadcrumb>.active { 
 	color: #ccc; 
