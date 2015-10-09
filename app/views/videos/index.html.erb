@@ -24,16 +24,16 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="well">
+	<div class="well voffset3">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="/?page=<%= @page - 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-warning" <%= 'disabled="disabled"' if @page < 2 %>>&laquo; Prev</a>
+				<a href="/?page=<%= @page - 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-warning" <%= 'disabled="disabled"' if @page < 2 %>><b>&laquo; Prev</b></a>
 			</div>
 			<div class="col-sm-4">
 				<h4 class="text-center">Page <%= @page %></h4>
 			</div>
 			<div class="col-sm-4">
-				<a href="/?page=<%= @page + 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-warning">Next &raquo;</a>
+				<a href="/?page=<%= @page + 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-warning"><b>Next &raquo;</b></a>
 			</div>
 		</div>
 	</div>
