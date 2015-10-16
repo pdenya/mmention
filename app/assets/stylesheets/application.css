@@ -57,7 +57,6 @@ h1.text-center.bg-primary {
 
  body .header_wrap {
  	font-family: 'arial black';
- 	background: none;
  	color: #FFF;
  	padding: 20px;
  	text-align: left;
@@ -71,6 +70,13 @@ h1.text-center.bg-primary {
  .header_wrap a:hover {
 	color: #AAF5A8;
  }
+
+	body .header_wrap.lolart {
+		background-image: url('/images/games/lolheaderart_01.jpg');
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
 
  h1 {
  	background-color: #222;
@@ -87,6 +93,7 @@ h1.text-center.bg-primary {
 .container {
 	background-color: #2F2F2F;
 }
+
 
 
 .breadcrumb>.active { 
