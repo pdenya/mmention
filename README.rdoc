@@ -43,6 +43,6 @@
 
 ## Pushing to Heroku
 
-	heroku pg:reset mmention
-	heroku pg:push mmention DATABASE
+	heroku pg:reset DATABASE_URL
+	heroku pg:push mmention DATABASE_URL
 
