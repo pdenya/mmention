@@ -46,3 +46,8 @@
 	heroku pg:reset DATABASE_URL
 	heroku pg:push mmention DATABASE_URL
 
+## Pulling from Heroku
+	
+	dropdb mmention
+	heroku pg:pull DATABASE_URL mmention
+
