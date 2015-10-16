@@ -14,7 +14,9 @@ class VideosController < ApplicationController
 			"heroesofthestorm" => ['heroesofthestorm', 'nexusnewbies', 'competitivehots']
 		}
 
-		@subreddits = games[params[:game]]
+		@subreddits = games[params[:game].downcase]
+
+		@game = params[:game].downcase if @subreddits.present?
 
 		setup_context
 

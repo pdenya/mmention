@@ -71,8 +71,18 @@ h1.text-center.bg-primary {
 	color: #AAF5A8;
  }
 
-	body .header_wrap.lolart {
-		background-image: url('/images/games/lolheaderart_01.jpg');
+	body .header_wrap.art {
+
+	}
+
+	body .header_wrap.leagueoflegendsart {
+		background-image: url('/images/games/lolheaderart_02.jpg');
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	body .header_wrap.heroesofthestormart {
+		background-image: url('/images/games/heroesofthestorm_01.jpg');
 		background-repeat: no-repeat;
 		background-position: center center;
 	}
@@ -90,7 +100,7 @@ h1.text-center.bg-primary {
  	background: #000;
  }
 
-.container {
+.bg-grey {
 	background-color: #2F2F2F;
 }
 
@@ -106,17 +116,17 @@ h1.text-center.bg-primary {
  	color: #1095C7;
  }
 
-span.label {
-	letter-spacing: .75px;
- 	padding: 3%;
- 	font-weight: normal;
- 	background: #fff;
- 	color: #555;
+.btn-white {
+	background: #FFF;
+	color: #555;
+	border: 1px solid #DFDFDF;
 }
 
- span.label a {
- 	color: #555;
- }
+.btn-white:hover {
+	background: #5bc0de;
+	color: #FFF; 
+	border: 1px solid #FFF;
+}
 
 .well { 
 	border: 0px; 
@@ -132,6 +142,13 @@ span.label {
  ol.breadcrumb {
  	border-radius: 0px;
  	background-color: #555;
+ 	margin-left: -15px;
+ 	margin-right: -15px;
+ 	border-radius: 3px 3px 0px 0px;
+
+ 	>li>a {
+ 		color: #FFF;
+ 	}
  }
 
  .comments iframe {
@@ -140,3 +157,38 @@ span.label {
  }
 
 .reddit-embed-footer { display: none !important; }
+
+
+.heroesofthestorm {
+	.header_wrap h1.bg-primary {
+		background-color: #02D0FF;
+	}
+
+	.breadcrumb {
+		background: #526786;
+	}
+}
+
+
+.leagueoflegends {
+	.header_wrap {
+		h1.bg-primary {
+			background-color: #D79922;
+		}
+	}
+
+	.container.bg-grey {
+		background-color: #1E2631;
+	}
+
+	.breadcrumb {
+		background: #d79922;
+		border: 1px solid #d79922;
+		border-top-color: #f6c653;
+
+		.active {
+			color: #222;
+			text-shadow: 0px 1px 1px rgba(255,255,255,.2);
+		}
+	}
+}

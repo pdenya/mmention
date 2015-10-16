@@ -8,15 +8,8 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<%= javascript_include_tag "application" %>
 	</head>
-	<body>
+	<body class="<%= yield(:body_class) %>">
 		<%= yield %>
-
-
-		<style type="text/css">
-			.header_wrap {
-				background: url(<%= image_path 'header_art.jpg' %>) no-repeat center center;
-			}	
-		</style>
 		
 		<% if Rails.env.production? %>
 			<script>

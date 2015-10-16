@@ -1,29 +1,60 @@
-<div class="header_wrap lolart">
-	<a href="/"><h1 class="text-center voffset0 bg-primary"><span>m</span>mention</h1></a>
+<% content_for(:body_class, @game) if @game %>
+
+<div class="header_wrap <%= @game if @game %>art">
+	<div class="container">
+		<a href="/"><h1 class="text-center voffset0 bg-primary"><span>m</span>mention</h1></a>	
+	</div>
+	
 </div>
-<ol class="breadcrumb vboffset0 text-center">
-	<li class="active">The most referenced videos from the r/leagueoflegends &amp; r/summonerschool subreddits.</li>
-</ol>
-<div class="container">
-	<div class="row voffset6">
-		<% @references.each do |ref| %>
-			<div class="col-sm-6 voffset2">
-				<div class="well no-border text-center">
-					<iframe width="420" height="315" src="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen></iframe>
-					<div class="row text-left voffset2">
-						<div class="col-sm-5">
-							<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
-						</div>
-						<div class="col-sm-7 text-right">
-							<% @subs_mentioning_video[ref.video.id].each do |subreddit| %>
-								<span class="label label-info"><a href="/?subreddit=<%= subreddit %>">r/<%= subreddit %></a></span>
-							<% end %>
+<div class="container bg-grey">
+	<ol class="breadcrumb vboffset0 text-center">
+		<% if @game == "heroesofthestorm" %>
+			<li class="active">The most referenced videos from the r/HeroesoftheStorm &amp; r/NexusNewbies subreddits.</li>
+		<% elsif @game == "leagueoflegends" %>
+			<li class="active">The most referenced videos from the r/LeagueofLegends &amp; r/SummonerSchool subreddits.</li>
+		<% else %>
+			<li class="active">The most referenced videos from a few select subreddits :)</li>
+			<li>
+				<a href="/games/leagueoflegends">League of Legends</a>
+			</li>
+			<li>
+				<a href="/games/heroesofthestorm">Heroes of the Storm</a>
+			</li>
+		<% end %>
+	</ol>
+	<br>
+	<% i = 0 %>
+	<% @references.each do |ref| %>
+		<% i += 1 %>
+		<% if i % 2 == 1 %>
+			<div class="row">
+		<% end %>
+				<div class="col-sm-6 voffset2">
+					<div class="well no-border text-center">
+						<iframe width="420" height="315" osrc="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen></iframe>
+						<div class="row text-left voffset2">
+							<div class="col-sm-5">
+								<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
+							</div>
+							<div class="col-sm-7 text-right">
+								<% @subs_mentioning_video[ref.video.id].each do |subreddit| %>
+									<a href="/?subreddit=<%= subreddit %>" class="btn btn-white btn-sm voffset1">r/<%= subreddit %></a>
+								<% end %>
+							</div>
 						</div>
 					</div>
 				</div>
+		<% if i % 2 == 0 %>
 			</div>
 		<% end %>
-	</div>
+	<% end %>
+
+	<%# make sure we have that last closing div for the row %>
+	<% if i % 2 != 0 %>
+		</div>
+	<% end %>
+
+
 	<div class="well voffset3">
 		<div class="row">
 			<div class="col-sm-4">
@@ -41,6 +72,12 @@
 
 <script type="text/javascript">
 	$(function() {
+		
+		$('iframe[osrc]').each(function() {
+			$(this).attr('src', $(this).attr('osrc'));
+		});
+
 		$('.well.no-border').fitVids();
+
 	})
 </script>
