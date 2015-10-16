@@ -13,7 +13,7 @@ development:
   adapter: postgresql
   username: pressfriendly
   password:
-  database: leaguevids
+  database: mmention
   pool: 5
   timeout: 5000
   host: localhost

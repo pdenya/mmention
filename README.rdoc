@@ -1,28 +1,41 @@
-== README
+## New Data Process
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- login in incognito window as paul@pressfriendly.com to https://bigquery.cloud.google.com
+- https://bigquery.cloud.google.com/queries/mmention-v2
+- query and export to table, allow large queries
 
-Things you may want to cover:
+export table
+ - CSV, GZip, mmention/201510-*.csv.gzip
 
-* Ruby version
+https://console.developers.google.com/project/mmention-v2/storage/browser/mmention/
+ - download and unzip them all
 
-* System dependencies
+cat ~/Downloads/*.csv > ~/Downloads/mmention.csv
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+iruby notebook
+run the import cell
+last result:
+	{
+	  "total": 4282070,
+	  "total_imported": 70679,
+	  "seconds": 1749
+	}
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## The Big Data Query
+
+SELECT
+  author,
+  body,
+  score,
+  name,
+  link_id,
+  created_utc,
+  subreddit_id,
+  subreddit,
+  gilded,
+  id
+FROM
+  TABLE_QUERY([fh-bigquery:reddit_comments], "table_id CONTAINS '2015' AND LENGTH(table_id)<8")
+WHERE
+  body CONTAINS 'youtube.com/' OR body CONTAINS 'youtu.be/';
