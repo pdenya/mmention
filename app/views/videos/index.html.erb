@@ -8,10 +8,8 @@
 </div>
 <div class="container bg-grey">
 	<ol class="breadcrumb vboffset0 text-center">
-		<% if @game == "heroesofthestorm" %>
-			<li class="active">The most referenced videos from the r/HeroesoftheStorm &amp; r/NexusNewbies subreddits.</li>
-		<% elsif @game == "leagueoflegends" %>
-			<li class="active">The most referenced videos from the r/LeagueofLegends &amp; r/SummonerSchool subreddits.</li>
+		<% if @subreddits.present? %>
+			<li class="active">The most referenced videos from the <%= @subreddits.map {|s| "r/#{s}" }.to_sentence %> subreddit<%= 's' if @subreddits.length > 1 %>.</li>
 		<% else %>
 			<li class="active">The most referenced videos from a few select subreddits :)</li>
 			<li>
@@ -38,7 +36,7 @@
 							</div>
 							<div class="col-sm-7 text-right">
 								<% @subs_mentioning_video[ref.video.id].each do |subreddit| %>
-									<a href="/?subreddit=<%= subreddit %>" class="btn btn-white btn-sm voffset1">r/<%= subreddit %></a>
+									<a href="/r/<%= subreddit %>" class="btn btn-white btn-sm voffset1">r/<%= subreddit %></a>
 								<% end %>
 							</div>
 						</div>
@@ -58,13 +56,13 @@
 	<div class="well voffset3">
 		<div class="row">
 			<div class="col-sm-4">
-				<a href="/?page=<%= @page - 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-warning" <%= 'disabled="disabled"' if @page < 2 %>><b>&laquo; Prev</b></a>
+				<a href="/<%= "r/#{params[:subreddit]}" if params[:subreddit] %>?page=<%= @page - 1 %>" class="btn btn-block btn-warning" <%= 'disabled="disabled"' if @page < 2 %>><b>&laquo; Prev</b></a>
 			</div>
 			<div class="col-sm-4">
 				<h4 class="text-center">Page <%= @page %></h4>
 			</div>
 			<div class="col-sm-4">
-				<a href="/?page=<%= @page + 1 %><%= "&subreddit=#{params[:subreddit]}" if params[:subreddit] %>" class="btn btn-block btn-warning"><b>Next &raquo;</b></a>
+				<a href="/<%= "r/#{params[:subreddit]}" if params[:subreddit] %>?page=<%= @page + 1 %>" class="btn btn-block btn-warning"><b>Next &raquo;</b></a>
 			</div>
 		</div>
 	</div>

@@ -9,14 +9,11 @@ class VideosController < ApplicationController
 	end
 
 	def game
-		games = {
-			"leagueoflegends" => ["leagueoflegends","summonerschool"],
-			"heroesofthestorm" => ['heroesofthestorm', 'nexusnewbies', 'competitivehots']
-		}
+		
 
-		@subreddits = games[params[:game].downcase]
+		
 
-		@game = params[:game].downcase if @subreddits.present?
+		
 
 		setup_context
 
@@ -27,10 +24,30 @@ class VideosController < ApplicationController
 		# get page, default to 1
 		@page = params[:page] ? params[:page].to_i : 1
 
+		# 
+		games = {
+			"leagueoflegends" => ["leagueoflegends","summonerschool","loleventvods"],
+			"heroesofthestorm" => ['heroesofthestorm', 'nexusnewbies', 'competitivehots']
+		}
+
+
+
 		# order by reference counts
 		@references = Reference.includes(:video).select('video_id, count(*) as count').where('').group('video_id').order('count(*) DESC').limit(10).offset(10*(@page - 1))
 		@references = @references.joins("INNER JOIN comments ON (\"references\".comment_id = comments.id AND comments.posted_at > '#{60.days.ago.strftime('%Y-%m-%d')}')")
-		@subreddits ||= params[:subreddit].downcase.split('+') if params[:subreddit]
+		@subreddits = params[:subreddit].downcase.split('+') if params[:subreddit]
+
+		# setup game styles and such
+		if params[:game]
+			@subreddits = games[params[:game].downcase]
+			@game = params[:game].downcase if @subreddits.present?
+		elsif @subreddits.present?
+			games.each do |game,subs|
+				if subs.include?(@subreddits.first)	
+					@game = game
+				end
+			end
+		end
 
 		# particular subreddit only
 		if @subreddits
