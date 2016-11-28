@@ -51,9 +51,10 @@ class VideosController < ApplicationController
 		games = game_list
 
 		# order by reference counts
-		@references = Reference.includes(:video).select('video_id, count(*) as count').where('').group('video_id').order('count(*) DESC').limit(10).offset(10*(@page - 1))
+		@references = Reference.includes(:video).select('video_id, count(*) as count').where('videos.is_hidden = false').group('video_id').order('count(*) DESC').limit(10).offset(10*(@page - 1))
 		#@references = @references.joins("INNER JOIN comments ON (\"references\".comment_id = comments.id AND comments.posted_at > '#{90.days.ago.strftime('%Y-%m-%d')}')")
 		@references = @references.joins("INNER JOIN comments ON (\"references\".comment_id = comments.id)")
+		@references = @references.joins("INNER JOIN videos ON (\"references\".video_id = videos.id)")
 		@subreddits = params[:subreddit].downcase.split('+') if params[:subreddit]
 
 		# setup game styles and such

@@ -22,12 +22,10 @@
 
 				<div class="voffset4 comments">
 					<div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="true" data-embed-live="true" data-embed-created="2015-08-02T20:55:04.666Z">
-						<a href="<%= comment.url %>" style="visibility: hidden;">Comment</a>
+						<a href="<%= comment.full_comment_url %>" style="visibility: hidden;">Comment</a>
 						<div class="well no-border">
 							<p><b>[<%= comment.score %>] <%= comment.user %> in /r/<%= comment.subreddit %></b></p>
-							<p><a href="<%= comment.thread_url %>">reddit thread</a> | <a href="<%= comment.url %>">reddit comment</a></p>
-
-							<%= BlueCloth.new(comment.text).to_html.html_safe  %>
+							<p><a href="<%= comment.full_thread_url %>">reddit thread</a> | <a href="<%= comment.full_comment_url %>">reddit comment</a></p>
 						</div>
 					</div>
 				</div>
