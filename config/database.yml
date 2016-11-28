@@ -5,9 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  username: pressfriendly
+  password:
+  database: mmention
   pool: 5
   timeout: 5000
+  host: localhost
 
 development:
   adapter: postgresql

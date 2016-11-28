@@ -6,18 +6,41 @@ class VideosController < ApplicationController
 
 	def show
 		@video = Video.find(params[:video_id])
+		@comments = @video.comments.where('score > 0').order('score DESC').limit(20)
+		subreddit = @comments.first[:subreddit]
+
+		self.game_list.each do |game,subs|
+			if subs.include?(subreddit)	
+				@game = game
+				break
+			end
+		end
 	end
 
 	def game
-		
-
-		
-
-		
-
 		setup_context
 
 		render "index"
+	end
+
+	def game_list
+		{
+			"leagueoflegends" => ["leagueoflegends","summonerschool","loleventvods"],
+			"heroesofthestorm" => ['heroesofthestorm', 'nexusnewbies', 'competitivehots'],
+			"overwatch" => ['overwatch', 'blackwatch'],
+			"wow" => ['wow', 'wownoob'],
+			"diablo" => ['diablo', 'diablo3'],
+			"starcraft" => ['starcraft'],
+			"hearthstone" => ['hearthstone'],
+			"dota2" => ['dota2','learndota2'],
+			"smite" => ['smite', 'smitetraining'],
+			"heroesofnewerth" => ['heroesofnewerth'],
+			"vainglory" => ['vainglorygame'],
+			"battleborn" => ['battleborn'],
+			"csgo" => ['globaloffensive','learncsgo'],
+			"tf2" => ['tf2','newtotf2','truetf2'],
+			"minecraft" => ['minecraft']
+		}
 	end
 
 	def setup_context
@@ -25,16 +48,12 @@ class VideosController < ApplicationController
 		@page = params[:page] ? params[:page].to_i : 1
 
 		# 
-		games = {
-			"leagueoflegends" => ["leagueoflegends","summonerschool","loleventvods"],
-			"heroesofthestorm" => ['heroesofthestorm', 'nexusnewbies', 'competitivehots']
-		}
-
-
+		games = game_list
 
 		# order by reference counts
 		@references = Reference.includes(:video).select('video_id, count(*) as count').where('').group('video_id').order('count(*) DESC').limit(10).offset(10*(@page - 1))
-		@references = @references.joins("INNER JOIN comments ON (\"references\".comment_id = comments.id AND comments.posted_at > '#{60.days.ago.strftime('%Y-%m-%d')}')")
+		#@references = @references.joins("INNER JOIN comments ON (\"references\".comment_id = comments.id AND comments.posted_at > '#{90.days.ago.strftime('%Y-%m-%d')}')")
+		@references = @references.joins("INNER JOIN comments ON (\"references\".comment_id = comments.id)")
 		@subreddits = params[:subreddit].downcase.split('+') if params[:subreddit]
 
 		# setup game styles and such

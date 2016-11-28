@@ -1,15 +1,11 @@
-
-	<div class="header_wrap">
+<div class="header_wrap <%= @game if @game %>art">
+	<div class="container">
 		<a href="/">
 			<h1 class="text-center voffset0 bg-primary"><span>m</span>mention</h1>
 		</a>
 	</div>
+</div>
 
-
-<ol class="breadcrumb vboffset0 text-center">
-	<h2 class="text-center">Highly Recommended League of Legends videos</h1>
-	<li class="active">The most referenced videos from the r/leagueoflegends and r/summonerschool subreddits.</li>
-</ol>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 text-center voffset4 video-container">
@@ -19,7 +15,7 @@
 	<div class="row"></div>
 		<div class="col-sm-12">
 			<% users = [] %>
-			<% @video.comments.where('score > 0').order('score DESC').limit(20).each do |comment| %>
+			<% @comments.each do |comment| %>
 				<%# Only show highest voted comment for each user %>
 				<% next if users.include?(comment.user) %>
 				<% users << comment.user %>

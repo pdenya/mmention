@@ -14,97 +14,101 @@
  *= require_self
  */
 
-/* colors */
-.bg-primary { background: #0AC92B; /* green */ }
+.vnooffset, .voffset0 { margin-top: 0px; }
+.voffset  { margin-top: 2px; }
+.voffset1 { margin-top: 5px; }
+.voffset2 { margin-top: 10px; }
+.voffset3 { margin-top: 15px; }
+.voffset4 { margin-top: 30px; }
+.voffset5 { margin-top: 40px; }
+.voffset6 { margin-top: 60px; }
+.voffset7 { margin-top: 80px; }
+.voffset8 { margin-top: 100px; }
+.voffset9 { margin-top: 150px; }
+.vboffset0 { margin-bottom: 0px; }
+.vboffset1 { margin-bottom: 5px; }
+.vboffset2 { margin-bottom: 10px; }
+.vboffset3 { margin-bottom: 15px; }
+.vroffset1,.roffset1 { margin-right: 5px; }
+.vroffset2,.roffset2 { margin-right: 10px; }
+.roffset3 { margin-right: 15px; }
+.roffset4 { margin-right: 30px; }
+.loffset { margin-left: 2px; }
+.loffset1 { margin-left: 5px; }
+.loffset2 { margin-left: 10px; }
+.loffset3 { margin-left: 15px; }
+.loffset4 { margin-left: 30px; }
 
-h1.text-center.bg-primary span { 
-	color: #555; /* grey */ 
-} 
-
-h1.text-center.bg-primary {
-	font-size: 20px;
+.text-sm {
+	font-size: .85em;
 }
-
-
- .vnooffset, .voffset0 { margin-top: 0px; }
- .voffset  { margin-top: 2px; }
- .voffset1 { margin-top: 5px; }
- .voffset2 { margin-top: 10px; }
- .voffset3 { margin-top: 15px; }
- .voffset4 { margin-top: 30px; }
- .voffset5 { margin-top: 40px; }
- .voffset6 { margin-top: 60px; }
- .voffset7 { margin-top: 80px; }
- .voffset8 { margin-top: 100px; }
- .voffset9 { margin-top: 150px; }
- .vboffset0 { margin-bottom: 0px; }
- .vboffset1 { margin-bottom: 5px; }
- .vboffset2 { margin-bottom: 10px; }
- .vboffset3 { margin-bottom: 15px; }
- .vroffset1,.roffset1 { margin-right: 5px; }
- .vroffset2,.roffset2 { margin-right: 10px; }
- .roffset3 { margin-right: 15px; }
- .roffset4 { margin-right: 30px; }
- .loffset { margin-left: 2px; }
- .loffset1 { margin-left: 5px; }
- .loffset2 { margin-left: 10px; }
- .loffset3 { margin-left: 15px; }
- .loffset4 { margin-left: 30px; }
-
- .text-sm {
- 	font-size: .85em;
- }
-
- body .header_wrap {
- 	font-family: 'arial black';
- 	color: #FFF;
- 	padding: 20px;
- 	text-align: left;
- }
-
- .header_wrap a {
-	color: #FFF;
-	text-decoration: none;
- }
-
- .header_wrap a:hover {
-	color: #AAF5A8;
- }
-
-	body .header_wrap.art {
-
-	}
-
-	body .header_wrap.leagueoflegendsart {
-		background-image: url('/images/games/lolheaderart_02.jpg');
-		background-repeat: no-repeat;
-		background-position: center center;
-	}
-
-	body .header_wrap.heroesofthestormart {
-		background-image: url('/images/games/heroesofthestorm_01.jpg');
-		background-repeat: no-repeat;
-		background-position: center center;
-	}
-
-
- h1 {
- 	background-color: #222;
- 	background-color: rgba(0,0,0,.7);
- 	display: inline-block;
- 	padding: 20px;
- 	border-radius: 5px;
- }
-
- body {
- 	background: #000;
- }
 
 .bg-grey {
 	background-color: #2F2F2F;
 }
 
+body {
+	background: #000;
+}
 
+body .header_wrap {
+	background-position: center center;
+	background-repeat: no-repeat;
+	color: #FFF;
+	font-family: 'arial black';
+	padding: 20px;
+	text-align: left;
+
+	a {
+		color: #FFF;
+		text-decoration: none;		
+	}
+
+	a:hover {
+		color: #AAF5A8;		
+	}
+
+	p {
+	    background: rgba(0, 0, 0, 0.7);
+		border-radius: 5px;
+		float: left;
+		padding: 9px 32px;
+		margin-top: 10px;
+		font-size: 17px;
+		font-family: helvetica neue;
+		font-weight: bold;
+		letter-spacing: .5px;
+	}
+}
+
+div.play-button { 
+	background: url("/images/play.png") no-repeat; 
+	height: 72px;
+	left: 50%;
+	margin-left: -36px;
+	margin-top: -36px;
+	position: absolute;
+	top: 220px;
+	width: 72px;
+}
+
+
+
+h1 {
+	background-color: #222;
+	background-color: rgba(0,0,0,.7);
+	display: inline-block;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+h1.text-center.bg-primary span { 
+	color: rgba(0,0,0,.4); /* grey */ 
+} 
+
+h1.text-center.bg-primary {
+	font-size: 20px;
+}
 
 .breadcrumb>.active { 
 	color: #ccc; 
@@ -112,7 +116,6 @@ h1.text-center.bg-primary {
 }
 
  a {
-
  	color: #1095C7;
  }
 
@@ -141,7 +144,7 @@ h1.text-center.bg-primary {
 
  ol.breadcrumb {
  	border-radius: 0px;
- 	background-color: #555;
+ 	background-color: #657794;
  	margin-left: -15px;
  	margin-right: -15px;
  	border-radius: 3px 3px 0px 0px;
@@ -156,26 +159,237 @@ h1.text-center.bg-primary {
  	box-shadow: none !important;
  }
 
+/* header art */
+
+body .header_wrap.art {
+	background-image: url('/images/header.jpg');
+}
+
+body .header_wrap.leagueoflegendsart {
+	background-image: url('/images/games/lolheaderart_02.jpg');
+}
+
+body .header_wrap.heroesofthestormart {
+	background-image: url('/images/games/heroesofthestorm_01.jpg');
+}
+
+body .header_wrap.heroesofthestormart {
+	background-image: url('/images/games/heroesofthestorm_01.jpg');
+}
+
+body .header_wrap.overwatchart {
+	background-image: url('/images/games/overwatch.jpg');
+}
+
+body .header_wrap.wowart {
+	background-image: url('/images/games/wow.jpg');
+}
+
+body .header_wrap.diabloart {
+	background-image: url('/images/games/diablo.jpg');
+}
+
+body .header_wrap.starcraftart {
+	background-image: url('/images/games/starcraft.jpg');
+}
+
+body .header_wrap.hearthstoneart {
+	background-image: url('/images/games/hearthstone.jpg');
+}
+
+body .header_wrap.dota2art {
+	background-image: url('/images/games/dota2.jpg');
+}
+
+body .header_wrap.smiteart {
+	background-image: url('/images/games/smite.jpg');
+}
+
+body .header_wrap.heroesofnewerthart {
+	background-image: url('/images/games/heroesofnewerth.jpg');
+}
+
+body .header_wrap.vaingloryart {
+	background-image: url('/images/games/vainglory.jpg');
+}
+
+body .header_wrap.battlebornart {
+	background-image: url('/images/games/battleborn.jpg');
+}
+
+body .header_wrap.csgoart {
+	background-image: url('/images/games/csgo.jpg');
+}
+
+body .header_wrap.tf2art {
+	background-image: url('/images/games/tf2.jpg');
+}
+
+body .header_wrap.minecraftart {
+	background-image: url('/images/games/minecraft.jpg');
+}
+
 .reddit-embed-footer { display: none !important; }
+
+/* color themes */
+
+/* root theme */
+.bg-primary { background: #0e8fe2;  }
+.btn-primary { background: #0e8fe2; border: none; }
 
 
 .heroesofthestorm {
-	.header_wrap h1.bg-primary {
-		background-color: #02D0FF;
-	}
+	.header_wrap h1.bg-primary { background-color: #02D0FF; }
+	.btn-primary { background-color: #02D0FF; }
 
 	.breadcrumb {
 		background: #526786;
 	}
 }
 
+.overwatch {
+	.header_wrap h1.bg-primary { background-color: #385aa2; }
+	.btn-primary { background-color: #385aa2; }
+
+	.breadcrumb {
+		background: #526786;
+	}
+}
+
+.wow {
+	.header_wrap h1.bg-primary { background-color: #16864b; }
+	.btn-primary { background-color: #16864b; }
+
+	.breadcrumb {
+		background: #486a37;
+	}
+}
+
+.diablo {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #71664a; }
+	.btn-primary { background-color: #71664a; }
+
+	.breadcrumb {
+		background: #141d26;
+	}
+}
+
+.starcraft {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #4e324b; }
+	.btn-primary { background-color: #4e324b; }
+
+	.breadcrumb {
+		background: #954c79;
+	}
+}
+
+.hearthstone {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #5fc7fc; }
+	.btn-primary { background-color: #5fc7fc; }
+
+	.breadcrumb {
+		background: #9c5537;
+	}
+}
+
+.smite {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #518cae; }
+	.btn-primary { background-color: #518cae; }
+
+	.breadcrumb {
+		background: #646361;
+	}
+}
+
+.dota2 {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #f5512b; }
+	.btn-primary { background-color: #f5512b; }
+
+	.breadcrumb {
+		background: #776aa2;
+	}
+}
+
+.heroesofnewerth {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #7a8e39; }
+	.btn-primary { background-color: #7a8e39; }
+
+	.breadcrumb {
+		background: #5c6759;
+	}
+}
+
+.vainglory {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #5f849f; }
+	.btn-primary { background-color: #5f849f; }
+
+	.breadcrumb {
+		background: #2d404e;
+	}
+}
+
+.battleborn {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #934b94; }
+	.btn-primary { background-color: #934b94; }
+
+	.breadcrumb {
+		background: #5e554c;
+	}
+}
+
+.csgo {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #227198; }
+	.btn-primary { background-color: #227198; }
+
+	.breadcrumb {
+		background: #227198;
+	}
+}
+
+.tf2 {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #c34344; }
+	.btn-primary { background-color: #c34344; }
+
+	.breadcrumb {
+		background: #6c5e53;
+	}
+}
+
+.minecraft {
+	background: #05090c;
+
+	.header_wrap h1.bg-primary { background-color: #6db23d; }
+	.btn-primary { background-color: #6db23d; }
+
+	.breadcrumb {
+		background: #29272a;
+	}
+}
+
 
 .leagueoflegends {
-	.header_wrap {
-		h1.bg-primary {
-			background-color: #D79922;
-		}
-	}
+	.header_wrap h1.bg-primary { background-color: #D79922; }
+	.btn-primary  { background-color: #D79922; }
 
 	.container.bg-grey {
 		background-color: #1E2631;

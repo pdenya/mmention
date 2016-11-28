@@ -2,7 +2,17 @@
 
 <div class="header_wrap <%= @game if @game %>art">
 	<div class="container">
-		<a href="/"><h1 class="text-center voffset0 bg-primary"><span>m</span>mention</h1></a>	
+		<div class="row">
+			<div class="col-md-2 col-sm-4">
+				<a href="/"><h1 class="text-center voffset0 bg-primary"><span>m</span>mention</h1></a>			
+			</div>
+			<div class="col-sm8-8 text-right">
+				<% if @subreddits.nil? %>
+					<p>Youtube videos mentioned in reddit comments</p>
+				<% end %>
+			</div>
+		</div>
+		
 	</div>
 	
 </div>
@@ -11,13 +21,21 @@
 		<% if @subreddits.present? %>
 			<li class="active">The most referenced videos from the <%= @subreddits.map {|s| "r/#{s}" }.to_sentence %> subreddit<%= 's' if @subreddits.length > 1 %>.</li>
 		<% else %>
-			<li class="active">The most referenced videos from a few select subreddits :)</li>
-			<li>
-				<a href="/games/leagueoflegends">League of Legends</a>
-			</li>
-			<li>
-				<a href="/games/heroesofthestorm">Heroes of the Storm</a>
-			</li>
+			<li><a href="/games/leagueoflegends">League of Legends</a></li>
+			<li><a href="/games/heroesofthestorm">Heroes of the Storm</a></li>
+			<li><a href="/games/overwatch">Overwatch</a></li>
+			<li><a href="/games/wow">World of Warcraft</a></li>
+			<li><a href="/games/diablo">Diablo</a></li>
+			<li><a href="/games/starcraft">Starcraft</a></li>
+			<li><a href="/games/hearthstone">Hearthstone</a></li>
+			<li><a href="/games/dota2">DotA2</a></li>
+			<li><a href="/games/smite">Smite</a></li>
+			<li><a href="/games/heroesofnewerth">Heroes of Newerth</a></li>
+			<li><a href="/games/vainglory">Vainglory</a></li>
+			<li><a href="/games/battleborn">Battleborn</a></li>
+			<li><a href="/games/csgo">CS:GO</a></li>
+			<li><a href="/games/tf2">TF2</a></li>
+			<li><a href="/games/minecraft">Minecraft</a></li>
 		<% end %>
 	</ol>
 	<br>
@@ -29,14 +47,19 @@
 		<% end %>
 				<div class="col-sm-6 voffset2">
 					<div class="well no-border text-center">
-						<iframe width="420" height="315" osrc="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen></iframe>
+						<div class="youtube-preview">
+							<img class="youtube-thumb" data-url="<%= ref.video.embed_url %>" width="100%" src="<%= ref.video.preview_image_url %>">
+							<div class="play-button"></div>
+						</div>
+						<iframe width="420" height="315" osrc="<%= ref.video.embed_url %>" frameborder="0" allowfullscreen style="display:none;"></iframe>
+						
 						<div class="row text-left voffset2">
-							<div class="col-sm-5">
-								<%= link_to "#{ref.count} reddit comments", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
+							<div class="col-sm-5 col-md-4">
+								<%= link_to "Mentioned #{ref.count} times", show_video_path(ref.video.id), class: 'btn btn-primary'  %>
 							</div>
-							<div class="col-sm-7 text-right">
+							<div class="col-sm-7 col-md-8 text-right">
 								<% @subs_mentioning_video[ref.video.id].each do |subreddit| %>
-									<a href="/r/<%= subreddit %>" class="btn btn-white btn-sm voffset1">r/<%= subreddit %></a>
+									<a href="/r/<%= subreddit %>" class="btn btn-white btn-xs voffset1">r/<%= subreddit %></a>
 								<% end %>
 							</div>
 						</div>
@@ -55,13 +78,13 @@
 
 	<div class="well voffset3">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-2">
 				<a href="/<%= "r/#{params[:subreddit]}" if params[:subreddit] %>?page=<%= @page - 1 %>" class="btn btn-block btn-warning" <%= 'disabled="disabled"' if @page < 2 %>><b>&laquo; Prev</b></a>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-8">
 				<h4 class="text-center">Page <%= @page %></h4>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-2">
 				<a href="/<%= "r/#{params[:subreddit]}" if params[:subreddit] %>?page=<%= @page + 1 %>" class="btn btn-block btn-warning"><b>Next &raquo;</b></a>
 			</div>
 		</div>
@@ -70,12 +93,17 @@
 
 <script type="text/javascript">
 	$(function() {
-		
-		$('iframe[osrc]').each(function() {
-			$(this).attr('src', $(this).attr('osrc'));
+		$('.youtube-preview').on('mouseover', function() {
+			// load the youtube video
+			var iframe = $(this).parent().find('iframe');
+			iframe.attr('src', iframe.attr('osrc')).css('display', 'block');
+
+			// resize the youtube video
+			$(this).parent().fitVids();
+
+			// remove the play button but let the image sit behind the youtube video so we don't get a flicker
+			$(this).find('.play-button').remove();
+			$(this).width($(this).width()).css('position', 'absolute');
 		});
-
-		$('.well.no-border').fitVids();
-
 	})
 </script>
