@@ -39,43 +39,47 @@ Video pages (eg: http://mmention.com/v/2243) have a larger video with the top 20
 
 ## New Data Process
 
-	login to https://bigquery.cloud.google.com
+login to https://bigquery.cloud.google.com
 
-	create a project, eg: mmention-v2 (requires a billing enabled project even though this is free)
+create a project, eg: mmention-v2 (requires a billing enabled project even though this is free)
 
-	https://bigquery.cloud.google.com/queries/mmention-v2
-	- query and export to table, allow large queries
+https://bigquery.cloud.google.com/queries/mmention-v2
+- query and export to table, allow large queries
 
-	https://console.cloud.google.com
-	- create a bucket we can export all that data into, eg: mmention
+https://console.cloud.google.com
+- create a bucket we can export all that data into, eg: mmention
 
-	- export table
-		- CSV, GZip
-		- cloud url format: mmention/201610-*.csv.gzip (* is because it will have to be split into multiple files)
+- export table
+	- CSV, GZip
+	- cloud url format: mmention/201610-*.csv.gzip (* is because it will have to be split into multiple files)
 
-	https://console.developers.google.com/project/mmention-v2/storage/browser/mmention/
-	 - download and unzip them all
+https://console.developers.google.com/project/mmention-v2/storage/browser/mmention/
+ - download and unzip them all
 
-	`cat ~/Downloads/*.csv > ~/Downloads/mmention.csv`
-	move mmention.csv to the root of the rails project
+    cat ~/Downloads/*.csv > ~/Downloads/mmention.csv
 
-	
-	`rails console`
-	`CommentImporter.import_games` 
-	or 
-	`CommentImporter.import(csvfile: 'mmention.csv', import_subs: ['whatever', 'subreddits', 'you_want_to_import', 'eg', 'leagueoflegends'])`
+move mmention.csv to the root of the rails project
 
-	last result for 1.5gb csv:
-		{
-			:total => 5015134, 
-			:total_imported => 234596, 
-			:seconds => 9341, 
-			:minutes => 155
-		}
+
+    rails console
+    CommentImporter.import_games
+
+or 
+
+    CommentImporter.import(csvfile: 'mmention.csv', import_subs: ['whatever', 'subreddits', 'you_want_to_import', 'eg', 'leagueoflegends'])
+
+last result for 1.5gb csv:
+
+	{
+		:total => 5015134,
+		:total_imported => 234596,
+		:seconds => 9341,
+		:minutes => 155
+	}
 
 ### Hosting
 
-	This service is hosted on the $5/month DigitalOcean droplet.  The database is about 150mb for this set of games.
+This service is hosted on the $5/month DigitalOcean droplet.  The database is about 150mb for this set of games.
 
 
 
