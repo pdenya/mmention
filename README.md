@@ -1,6 +1,6 @@
 ## MMention
 
-This site, hosted at mmention.com is a way to quickly view the most recommended videos in a few select subreddits.  It came about easily because google cloud query has an archive of all reddit comments in every sub organized by month.
+http://mmention.com is a way to quickly view the most recommended videos in a few select subreddits.  It came about easily because google cloud query has an archive of all reddit comments in every sub organized by month.
 
 MMention.com is currently game focused with videos aggregated for 15 popular games.  The framework will work for any subreddit that we import.
 
@@ -72,3 +72,11 @@ Video pages (eg: http://mmention.com/v/2243) have a larger video with the top 20
 			:seconds => 9341, 
 			:minutes => 155
 		}
+
+### Export local database
+
+	pg_dump -h localhost mmention > mmention.pgsql
+
+### Import remote database
+	
+	psql -h localhost -U rails mmention_prod < mmention.pgsql
