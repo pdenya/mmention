@@ -81,6 +81,18 @@ body .header_wrap {
 	}
 }
 
+footer {
+    background: #2f2f2f;
+    margin-top: 20px;
+    padding: 20px;
+
+    color: #dcdcdc;
+
+    a {
+    	color: #82acc7;
+    }
+}
+
 div.play-button { 
 	background: url("/images/play.png") no-repeat; 
 	height: 72px;

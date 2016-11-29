@@ -10,6 +10,48 @@
 	</head>
 	<body class="<%= yield(:body_class) %>">
 		<%= yield %>
+
+		<footer>
+				<div class="container">
+					<h4>Games</h4>
+
+					<div class="row">
+						<div class="col-sm-2">
+							<ul class="list-unstyled">
+								<li><a href="/games/leagueoflegends">League of Legends</a></li>
+								<li><a href="/games/heroesofthestorm">Heroes of the Storm</a></li>
+								<li><a href="/games/overwatch">Overwatch</a></li>
+								<li><a href="/games/wow">World of Warcraft</a></li>
+								<li><a href="/games/diablo">Diablo</a></li>
+								
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul class="list-unstyled">
+								<li><a href="/games/dota2">DotA2</a></li>
+								<li><a href="/games/smite">Smite</a></li>
+								<li><a href="/games/heroesofnewerth">Heroes of Newerth</a></li>
+								<li><a href="/games/vainglory">Vainglory</a></li>
+								<li><a href="/games/battleborn">Battleborn</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-2">
+							<ul class="list-unstyled">
+								<li><a href="/games/csgo">CS:GO</a></li>
+								<li><a href="/games/starcraft">Starcraft</a></li>
+								<li><a href="/games/hearthstone">Hearthstone</a></li>
+								<li><a href="/games/tf2">TF2</a></li>
+								<li><a href="/games/minecraft">Minecraft</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-6 text-right">
+							<br><br>
+							<p><a href="http://github.com/pdenya/mmention" target="_blank" class="btn btn-xs btn-primary">View this site on GitHub</a></p>
+							<p>Built by <a href="http://pdenya.com" target="_blank" class="btn btn-xs btn-primary">Paul Denya</a></p>
+						</div>
+					</div>
+				</div>
+			</footer>
 		
 		<% if Rails.env.production? %>
 			<script>

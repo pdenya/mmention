@@ -73,10 +73,11 @@ Video pages (eg: http://mmention.com/v/2243) have a larger video with the top 20
 			:minutes => 155
 		}
 
-### Export local database
+### Hosting
 
-	pg_dump -h localhost mmention > mmention.pgsql
+	This service is hosted on the $5/month DigitalOcean droplet.  The database is about 150mb for this set of games.
 
-### Import remote database
-	
-	psql -h localhost -U rails mmention_prod < mmention.pgsql
+
+
+
+
